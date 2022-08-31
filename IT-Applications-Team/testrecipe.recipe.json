@@ -1,7 +1,7 @@
 {
   "name": "TestRecipe",
   "description": "When there is a trigger on a specified schedule, do action",
-  "version": 2,
+  "version": 3,
   "private": true,
   "concurrency": 1,
   "code": {
@@ -22,26 +22,26 @@
     },
     "extended_input_schema": [
       {
-        "type": "string",
-        "name": "trigger_every",
         "control_type": "integer",
-        "label": "Trigger every",
-        "hint": "Define repeating schedule. Enter whole numbers only.\n                        This field can be set to a minimum of 5 minutes.",
         "default": "5",
+        "extends_schema": true,
+        "hint": "Define repeating schedule. Enter whole numbers only.\n                        This field can be set to a minimum of 5 minutes.",
+        "label": "Trigger every",
+        "name": "trigger_every",
         "optional": false,
-        "extends_schema": true
+        "type": "string"
       },
       {
-        "type": "date_time",
-        "name": "start_after",
         "control_type": "date_time",
-        "label": "Start after",
-        "hint": "Set date and time to start or leave blank to start immediately. <b>Once recipe has been run or tested, value cannot be changed.</b>",
-        "optional": true,
         "extends_schema": true,
+        "hint": "Set date and time to start or leave blank to start immediately. <b>Once recipe has been run or tested, value cannot be changed.</b>",
+        "label": "Start after",
+        "name": "start_after",
+        "optional": true,
         "since_field": true,
-        "render_input": "date_time_conversion",
-        "parse_output": "date_time_conversion"
+        "type": "date_time",
+        "parse_output": "date_time_conversion",
+        "render_input": "date_time_conversion"
       }
     ],
     "block": [
@@ -59,6 +59,21 @@
           "message": "Test logger"
         },
         "uuid": "b62a7483-a43e-416c-907e-a4883600773d"
+      },
+      {
+        "number": 2,
+        "provider": "logger",
+        "name": "log_message",
+        "as": "84aff17f",
+        "keyword": "action",
+        "dynamicPickListSelection": {
+        },
+        "toggleCfg": {
+        },
+        "input": {
+          "message": "Another logger"
+        },
+        "uuid": "d4c8763a-84b4-4aa0-9a66-cb550c2fc564"
       }
     ],
     "uuid": "e8e997df-740e-4596-85a2-8eb1a3d81d0e"
